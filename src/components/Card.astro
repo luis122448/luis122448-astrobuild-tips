@@ -2,10 +2,11 @@
 interface Props {
 	title: string
 	time: string
-	tags: string
+	tags: string[]
+	slug: string
 }
 
-const { title, time, tags } = Astro.props
+const { title, time, tags, slug } = Astro.props
 ---
 
 <article
@@ -25,16 +26,17 @@ const { title, time, tags } = Astro.props
 			{time}
 		</time>
 
-		<a href="#">
+		<a href={`/posts/${slug}`}>
 			<h3 class="mt-0.5 text-lg text-gray-900 dark:text-white">
 				{title}
 			</h3>
 		</a>
-
-		<p
-			class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400"
-		>
-			{tags}
-		</p>
+		{
+			tags.map((data) => (
+				<p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500 dark:text-gray-400">
+					{data}
+				</p>
+			))
+		}
 	</div>
 </article>

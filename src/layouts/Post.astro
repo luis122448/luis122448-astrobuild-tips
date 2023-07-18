@@ -1,0 +1,45 @@
+---
+const {
+    content: { title, pudDate, image, tags }
+} = Astro.props
+---
+<article class="rounded-xl border border-gray-700 bg-gray-800 p-4">
+    <div class="flex items-center gap-4">
+      <img
+        alt={title}
+        src={image}
+        class="h-16 w-16 rounded-full object-cover"
+      />
+  
+      <div>
+        <h3 class="text-lg font-medium text-white">Claire Mac</h3>
+  
+        <div class="flow-root">
+          <ul class="-m-1 flex flex-wrap">
+            {
+                tags.map((data) => (
+                    <li class="p-1 leading-none">
+                        <a href="#" class="text-xs font-medium text-gray-300"> {data} </a>
+                    </li>
+                ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+    <ul class="mt-4 space-y-2">
+      <li>
+        <a
+          href="#"
+          class="block h-full rounded-lg border border-gray-700 p-4 hover:border-pink-600"
+        >
+          <strong class="font-medium text-white">Project A</strong>
+  
+          <p class="mt-1 text-xs font-medium text-gray-300">
+            <slot />
+          </p>
+        </a>
+      </li>
+    </ul>
+  </article>
